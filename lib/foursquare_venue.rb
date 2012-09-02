@@ -20,13 +20,15 @@ module Foursquare
     end
 
     def search(params={})
+      puts 'in the search method of the Venue class.'
       params = {:ll => "37.792694,-122.409325",
                 :llAcc => "100",
                 :alt => "0",
                 :altAcc=>"100",
                 :query=>"",
                 :limit=>"50",
-                :intent=>"checkin"}.merge!(params)
+                :intent=>"checkin",
+                :v=>"20120831"}.merge!(params)
 
       perform_graph_request("venues/search", params)
     end
