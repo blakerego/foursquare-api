@@ -15,6 +15,9 @@ module Foursquare
         params.each{|key, val| @query_string += "&#{key}=#{val}"}
         url = URI.parse("#{@base_url}#{endpoint}#{@query_string}")
         request = Net::HTTP::Get.new("#{url.path}?#{url.query}",{"Content-Type"=>"text/json"})
+
+        puts 'in perform_graph_request.'
+        puts "#{@base_url}#{endpoint}#{@query_string}"
       else
         url = URI.parse("#{@base_url}#{endpoint}#{@query_string}")
         request = Net::HTTP::Post.new("#{url.path}?#{url.query}",{"Content-Type"=>"text/json"})
